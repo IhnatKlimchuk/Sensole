@@ -21,17 +21,21 @@ namespace Notidar.Sensole
             _reportAction = reportAction;
             _task = Task.Run(async () => 
             {
+                DateTime? lastRunTimestamp = null;
+                var stringBuilder = new StringBuilder();
                 while (!_cancellationTokenSource.IsCancellationRequested)
                 {
                     try
                     {
-
-                        StringBuilder stringBuilder = new StringBuilder();
+                        var currentRunTimestamp = DateTime.UtcNow;
+                        TimeSpan? currentRunPeriod = lastRunTimestamp.HasValue ? currentRunTimestamp.Subtract(lastRunTimestamp.Value) : (TimeSpan?)null;
+                        stringBuilder.Clear();
                         foreach (var sensor in _sensors)
                         {
-                            stringBuilder.AppendLine(sensor.Report(0, _reportPeriod));
+                            stringBuilder.AppendLine(sensor.Report(0, currentRunPeriod));
                         }
                         _reportAction(stringBuilder.ToString());
+                        lastRunTimestamp = currentRunTimestamp;
                         await Task.Delay(_reportPeriod, _cancellationTokenSource.Token);
                     }
                     catch

@@ -15,12 +15,12 @@ namespace Notidar.Sensole
             _currentValue = currentValue;
         }
 
-        public string Report(int sensorIndex, TimeSpan timeFromPreviousCall)
+        public string Report(int sensorIndex, TimeSpan? timeFromPreviousCall)
         {
             long previousValue = _currentValue;
             _currentValue = _valueAccessor();
 
-            return $"{(string.IsNullOrEmpty(_name) ? $"Sensor {sensorIndex}" : _name)}: total value {_currentValue}, frequency {(_currentValue - previousValue) / timeFromPreviousCall.TotalSeconds:N2} rps";
+            return $"{(string.IsNullOrEmpty(_name) ? $"Sensor {sensorIndex}" : _name)}: total value {_currentValue}, frequency {(timeFromPreviousCall.HasValue ? ((_currentValue - previousValue) / timeFromPreviousCall.Value.TotalSeconds) : 0):N2} rps";
         }
     }
 }

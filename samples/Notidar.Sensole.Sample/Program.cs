@@ -16,8 +16,7 @@ namespace Notidar.Sensole.Sample
                     Console.SetCursorPosition(0,0);
                     Console.Write(report);
                 })
-                .Each(TimeSpan.FromSeconds(1));
-
+                .Each(TimeSpan.FromSeconds(3));
 
             while (true)
             {

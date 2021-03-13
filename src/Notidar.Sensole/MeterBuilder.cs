@@ -6,7 +6,7 @@ namespace Notidar.Sensole
     public class MeterBuilder
     {
         private List<ISensor> _senors = new List<ISensor>();
-        private Action<string> _reportAction = null;
+        private Action<string> _reportAction = Console.WriteLine;
         private Func<TimeSpan, string> _headerGenerator = null;
         internal MeterBuilder()
         {
@@ -24,7 +24,7 @@ namespace Notidar.Sensole
         }
         public MeterBuilder WithHeader(Func<string> headerGenerator)
         {
-            _headerGenerator = (timePeriod) => headerGenerator();
+            _headerGenerator = (_) => headerGenerator();
             return this;
         }
         public MeterBuilder WithSink(Action<string> reportAction)

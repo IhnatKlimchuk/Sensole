@@ -4,6 +4,6 @@ namespace Notidar.Sensole
 {
     public interface ISensor
     {
-        string Report(int sensorIndex, TimeSpan timeFromPreviousCall);
+        string Report(int sensorIndex, TimeSpan? timeFromPreviousCall);
     }
 }

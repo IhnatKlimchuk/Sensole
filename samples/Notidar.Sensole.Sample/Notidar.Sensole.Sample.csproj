@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Notidar.Sensole\Notidar.Sensole.csproj" />
+    <ProjectReference Include="..\..\src\Notidar.Sensole\Notidar.Sensole.csproj" />
   </ItemGroup>
 
 </Project>
