@@ -4,8 +4,8 @@ namespace Notidar.Sensole
 {
     public class RequestSensor : ISensor
     {
-        private Func<long> _valueAccessor = () => default;
-        private string _name = null;
+        private readonly Func<long> _valueAccessor = () => default;
+        private readonly string _name = null;
         private long _currentValue = default;
 
         public RequestSensor(Func<long> valueAccessor, string name = default, long currentValue = default)
@@ -15,12 +15,11 @@ namespace Notidar.Sensole
             _currentValue = currentValue;
         }
 
-        public string Report(int sensorIndex, TimeSpan? timeFromPreviousCall)
+        public string Report(SensorReportContext context)
         {
             long previousValue = _currentValue;
             _currentValue = _valueAccessor();
-
-            return $"{(string.IsNullOrEmpty(_name) ? $"Sensor {sensorIndex}" : _name)}: total value {_currentValue}, frequency {(timeFromPreviousCall.HasValue ? ((_currentValue - previousValue) / timeFromPreviousCall.Value.TotalSeconds) : 0):N2} rps";
+            return $"{(string.IsNullOrEmpty(_name) ? $"Sensor {context.Index}" : _name)}: total value {_currentValue}, frequency {(context.Delta.HasValue ? ((_currentValue - previousValue) / context.Delta.Value.TotalSeconds) : 0):N2} rps";
         }
     }
 }

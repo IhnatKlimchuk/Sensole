@@ -5,22 +5,26 @@ namespace Notidar.Sensole.Sample
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             long counterValue = 0;
-            using var meter = Meter.Builder
-                .SenseRequests(() => counterValue, name: "Requests total")
-                .Sense(new RequestSensor(() => counterValue / 2, "Requests success"))
-                .WithSink(report =>
-                {
-                    Console.SetCursorPosition(0,0);
-                    Console.Write(report);
-                })
-                .Each(TimeSpan.FromSeconds(3));
+            Console.WriteLine("Start counting... ");
 
-            while (true)
             {
-                Interlocked.Increment(ref counterValue);
+                using var meter = Meter.Builder
+                    .SenseRequests(() => counterValue, name: "Requests total")
+                    .WithHeader(context => $"Measuring for {DateTime.UtcNow.Subtract(context.InitialTimestamp)}...")
+                    .WithConsoleSink(replace: true)
+                    .Each(TimeSpan.FromSeconds(0.5));
+
+                while (!Console.KeyAvailable)
+                {
+                    Interlocked.Increment(ref counterValue);
+                    if (counterValue % 1000000 == 0)
+                    {
+                        Console.WriteLine("Blah... ");
+                    }
+                }
             }
         }
     }
