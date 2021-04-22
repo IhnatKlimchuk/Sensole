@@ -17,11 +17,20 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
     - name: Publish Notidar.Sensole
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: src/Notidar.Sensole/Notidar.Sensole.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+
+    - name: Publish Notidar.Sensole.Logging
+      uses: brandedoutcast/publish-nuget@v2.5.2
+      with:
+          PROJECT_FILE_PATH: src/Notidar.Sensole.Logging/Notidar.Sensole.Logging.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           INCLUDE_SYMBOLS: true
