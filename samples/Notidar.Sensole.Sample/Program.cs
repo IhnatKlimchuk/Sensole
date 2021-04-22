@@ -7,24 +7,24 @@ namespace Notidar.Sensole.Sample
     {
         static void Main()
         {
+            var random = new Random();
+
             long counterValue = 0;
+            long successCounterValue = 0;
             Console.WriteLine("Start counting... ");
 
-            {
-                using var meter = Meter.Builder
-                    .SenseRequests(() => counterValue, name: "Requests total")
+            using var meter = Meter.Builder
+                    .SenseRequests(() => counterValue, name: "Requests")
+                    .SenseRequests(() => successCounterValue, name: "Requests success")
+                    .SenseRequests(() => counterValue - successCounterValue, name: "Requests failed")
                     .WithHeader(context => $"Measuring for {DateTime.UtcNow.Subtract(context.InitialTimestamp)}...")
                     .WithConsoleSink(replace: true)
-                    .Each(TimeSpan.FromSeconds(0.5));
+                    .Each(TimeSpan.FromSeconds(0.1));
 
-                while (!Console.KeyAvailable)
-                {
-                    Interlocked.Increment(ref counterValue);
-                    if (counterValue % 1000000 == 0)
-                    {
-                        Console.WriteLine("Blah... ");
-                    }
-                }
+            while (!Console.KeyAvailable)
+            {
+                Interlocked.Increment(ref counterValue);
+                Interlocked.Add(ref successCounterValue, random.Next() % 2);
             }
         }
     }
