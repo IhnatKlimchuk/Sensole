@@ -34,9 +34,9 @@ namespace Notidar.Sensole
             }
         }
 
-        public static MeterBuilder SenseRequests(this MeterBuilder meterBuilder, Func<long> valueAccessor, string name = default)
+        public static MeterBuilder SenseOperation(this MeterBuilder meterBuilder, Func<long> valueAccessor, string name = default)
         {
-            return meterBuilder.Sense(new RequestSensor(valueAccessor, name));
+            return meterBuilder.Sense(new OperationSensor(valueAccessor, name));
         }
 
         public static MeterBuilder Sense(this MeterBuilder meterBuilder, Func<SensorReportContext, string> reportFunction)

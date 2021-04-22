@@ -7,20 +7,21 @@ namespace Notidar.Sensole.Sample
     {
         static void Main()
         {
-            var random = new Random();
-
             long counterValue = 0;
             long successCounterValue = 0;
             Console.WriteLine("Start counting... ");
 
             using var meter = Meter.Builder
-                    .SenseRequests(() => counterValue, name: "Requests")
-                    .SenseRequests(() => successCounterValue, name: "Requests success")
-                    .SenseRequests(() => counterValue - successCounterValue, name: "Requests failed")
-                    .WithHeader(context => $"Measuring for {DateTime.UtcNow.Subtract(context.InitialTimestamp)}...")
-                    .WithConsoleSink(replace: true)
-                    .Each(TimeSpan.FromSeconds(0.1));
+                .SenseOperation(() => counterValue, name: "Requests")
+                .SenseOperation(() => successCounterValue, name: "Requests success")
+                .SenseOperation(() => counterValue - successCounterValue, name: "Requests failed")
+                .Sense(context => $"Report delay {context.Delta}")
+                .WithHeader(context => $"Measuring for {DateTime.UtcNow.Subtract(context.InitialTimestamp)}...")
+                .WithFooter(_ => "That's how we roll!")
+                .WithConsoleSink(replace: true)
+                .Each(TimeSpan.FromSeconds(0.1));
 
+            var random = new Random();
             while (!Console.KeyAvailable)
             {
                 Interlocked.Increment(ref counterValue);

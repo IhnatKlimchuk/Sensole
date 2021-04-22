@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notidar.Sensole", "src\Noti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0FBBB6B8-5FC3-4ACF-8F02-F8419198DA62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notidar.Sensole.Tests", "tests\Notidar.Sensole.Tests\Notidar.Sensole.Tests.csproj", "{5E50B862-FAD0-4C1E-9763-C55F6DB10B2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notidar.Sensole.Tests", "tests\Notidar.Sensole.Tests\Notidar.Sensole.Tests.csproj", "{5E50B862-FAD0-4C1E-9763-C55F6DB10B2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{188EBA6E-AA9F-47A3-B35D-92D5C92758DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notidar.Sensole.Sample", "samples\Notidar.Sensole.Sample\Notidar.Sensole.Sample.csproj", "{D7ACB0E2-4597-4396-848D-D19D63F3FF29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notidar.Sensole.Logging", "src\Notidar.Sensole.Logging\Notidar.Sensole.Logging.csproj", "{15F502CD-7D68-4D25-B894-9DB665825E9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D7ACB0E2-4597-4396-848D-D19D63F3FF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7ACB0E2-4597-4396-848D-D19D63F3FF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7ACB0E2-4597-4396-848D-D19D63F3FF29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F502CD-7D68-4D25-B894-9DB665825E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F502CD-7D68-4D25-B894-9DB665825E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F502CD-7D68-4D25-B894-9DB665825E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F502CD-7D68-4D25-B894-9DB665825E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{C6A75FD8-3605-4B0C-B5F3-F571F359E1A7} = {F128B329-DF54-4348-BEC0-3F538E13F5CB}
 		{5E50B862-FAD0-4C1E-9763-C55F6DB10B2E} = {0FBBB6B8-5FC3-4ACF-8F02-F8419198DA62}
 		{D7ACB0E2-4597-4396-848D-D19D63F3FF29} = {188EBA6E-AA9F-47A3-B35D-92D5C92758DB}
+		{15F502CD-7D68-4D25-B894-9DB665825E9D} = {F128B329-DF54-4348-BEC0-3F538E13F5CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {725499E1-DBF2-4D9D-B9B6-E0D636A7FB0B}

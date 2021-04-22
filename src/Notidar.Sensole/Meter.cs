@@ -53,6 +53,8 @@ namespace Notidar.Sensole
                     // ignore
                 }
             }
+
+            Report(initialTimestamp, previousRunTimestamp, DateTime.UtcNow);
         }
 
         private void Report(DateTime initialTimestamp, DateTime? lastRunTimestamp, DateTime currentRunTimestamp)
