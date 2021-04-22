@@ -26,11 +26,11 @@ jobs:
       with:
           PROJECT_FILE_PATH: src/Notidar.Sensole/Notidar.Sensole.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
+          INCLUDE_SYMBOLS: false
 
     - name: Publish Notidar.Sensole.Logging
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: src/Notidar.Sensole.Logging/Notidar.Sensole.Logging.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
+          INCLUDE_SYMBOLS: false
