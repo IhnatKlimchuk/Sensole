@@ -5,10 +5,10 @@ namespace Notidar.Sensole
     public class OperationSensor : ISensor
     {
         private readonly Func<long> _valueAccessor = () => default;
-        private readonly string _name = null;
+        private readonly string? _name = null;
         private long _currentValue = default;
 
-        public OperationSensor(Func<long> valueAccessor, string name = default, long currentValue = default)
+        public OperationSensor(Func<long> valueAccessor, string? name = default, long currentValue = default)
         {
             _valueAccessor = valueAccessor;
             _name = name;

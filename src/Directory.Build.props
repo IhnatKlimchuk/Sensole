@@ -1,0 +1,15 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>Ihnat Klimchuk</Authors>
+    <PackageTags>console;logging;meter;notidar</PackageTags>
+    <PackageProjectUrl>https://github.com/IhnatKlimchuk/Sensole</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IhnatKlimchuk/Sensole</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.0</Version>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <LangVersion>latest</LangVersion>
+    <Nullable>annotations</Nullable>
+  </PropertyGroup>
+
+</Project>
