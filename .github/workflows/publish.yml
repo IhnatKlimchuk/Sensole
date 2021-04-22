@@ -24,5 +24,4 @@ jobs:
       with:
           PROJECT_FILE_PATH: src/Notidar.Sensole/Notidar.Sensole.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          NUGET_SOURCE: https://api.nuget.org
           INCLUDE_SYMBOLS: true
